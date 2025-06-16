@@ -42,7 +42,7 @@ class Account(AbstractBaseUser):
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
     username=models.CharField(max_length=100, unique=True)
-    email=models.EmailField(unique=100)
+    email=models.EmailField(unique=True)
     phone_no=models.CharField(max_length=100)
 
     
@@ -56,7 +56,7 @@ class Account(AbstractBaseUser):
     USERNAME_FIELD='email'
     REQUIRED_FIELDS=['username', 'first_name', 'last_name']
 
-    objects=MyAccountManager
+    objects=MyAccountManager()    #it tells we're using custom accountmanager for creating user. not django default one's.
 
     def __str__(self):
         return self.email
@@ -66,3 +66,5 @@ class Account(AbstractBaseUser):
     
     def has_module_perms(self,add_label):
         return True
+    
+    

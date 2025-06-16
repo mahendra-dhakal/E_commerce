@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'category',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -74,10 +75,14 @@ AUTH_USER_MODEL= 'accounts.Account'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
+DATABASES = DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'e_commerce',
+    'USER': 'postgres',
+    'PASSWORD': 'Mahen2@_Money',
+    'HOST': 'localhost',
+    'PORT': '5432', # default PostgreSQL port
     }
 }
 
