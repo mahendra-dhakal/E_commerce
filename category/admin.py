@@ -5,5 +5,6 @@ from .models import Category
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display=('category_name','description','cat_image','slug')
+    prepopulated_fields = {'slug':('category_name',)}   #by default write down slug field in django admin panel . we dont need to manually write down .
+    list_display=('category_name','description','slug')
     search_fields=('category_name','description','slug')

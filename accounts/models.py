@@ -9,13 +9,15 @@ class MyAccountManager(BaseUserManager):
             raise ValueError('User must have an email address')
         if not username:
             raise ValueError('User must have an username')
+        
+        # Create a new user instance using self.model (the User model)
         user=self.model(
             email=self.normalize_email(email),
             username=username,
             first_name=first_name,
             last_name=last_name,
         )
-        
+
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -66,5 +68,3 @@ class Account(AbstractBaseUser):
     
     def has_module_perms(self,add_label):
         return True
-    
-    
